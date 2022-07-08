@@ -6,7 +6,7 @@ import javax.inject.Named
 
 @Named
 class GetPersonUseCase(
-        private val getPerson: GetPerson
+    private val getPerson: GetPerson
 ) {
 
     operator fun invoke(id: UUID): Person? = getPerson.get(id)

@@ -3,19 +3,20 @@ package com.stringconcat.people.presentation.model
 import com.stringconcat.people.businessPeople.Person
 
 class PersonRespectfullViewModel(
-        private val person: Person
+    private val person: Person
 ) {
+    private val ageLimit = 40
 
     fun title() =
-            "${prefixIfNeeded()} ${person.firstName} ${person.secondName}"
+        "${prefixIfNeeded()} ${person.firstName} ${person.secondName}"
 
     private fun prefixIfNeeded() =
-            if (person.age() > 40)
-                when (person.sex) {
-                    Person.Sex.MAN -> "Mr"
-                    Person.Sex.WOMAN -> "Mrs"
-                }
-            else ""
+        if (person.age() > ageLimit)
+            when (person.sex) {
+                Person.Sex.MAN -> "Mr"
+                Person.Sex.WOMAN -> "Mrs"
+            }
+        else ""
 
 
     fun avatarUrl() = person.avatartUrl

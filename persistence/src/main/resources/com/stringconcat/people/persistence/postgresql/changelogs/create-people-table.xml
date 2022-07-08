@@ -8,7 +8,7 @@
     <changeSet id="create-people-schema" author="elukianov" runOnChange="false" failOnError="true">
         <sql>
             <![CDATA[
-                CREATE SCHEMA IF NOT EXISTS people;
+            CREATE SCHEMA IF NOT EXISTS people;
             ]]>
         </sql>
     </changeSet>
@@ -16,7 +16,7 @@
     <changeSet id="create-person-sequence" author="elukianov" runOnChange="false" failOnError="true">
         <sql>
             <![CDATA[
-                CREATE SEQUENCE IF NOT EXISTS people.person_entity_id_seq;
+            CREATE SEQUENCE IF NOT EXISTS people.person_entity_id_seq;
             ]]>
         </sql>
     </changeSet>
@@ -24,14 +24,34 @@
     <changeSet id="create-people-table" author="elukianov" runOnChange="false" failOnError="true">
         <sql>
             <![CDATA[
-                CREATE TABLE IF NOT EXISTS people.person_entity (
-                 id uuid PRIMARY KEY NOT NULL,
-                 avatart_url character varying(255),
-                 birth_date date,
-                 favorite_quote character varying(255),
-                 first_name character varying(255),
-                 second_name character varying(255),
-                 sex integer);
+            CREATE TABLE IF NOT EXISTS people.person_entity
+            (
+                id
+                uuid
+                PRIMARY
+                KEY
+                NOT
+                NULL,
+                avatart_url
+                character
+                varying
+            (
+                255
+            ),
+                birth_date date,
+                favorite_quote character varying
+            (
+                255
+            ),
+                first_name character varying
+            (
+                255
+            ),
+                second_name character varying
+            (
+                255
+            ),
+                sex integer);
             ]]>
         </sql>
     </changeSet>
