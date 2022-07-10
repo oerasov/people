@@ -1,0 +1,33 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Linter
+      run: ./gradlew detekt
+      
+    - name: Dependency security check
+      run: ./gradlew dependencyCheckAnalyze
+      
+    - name: Dependency updates
+      run: ./gradlew dependencyUpdates
+      
+    - name: Test
+      run: ./gradlew test
+        
+    - name: Build the Docker image
+      env: 
+        IMAGE_TAG: ${{ github.sha }}
+      run: ./build_image.sh
