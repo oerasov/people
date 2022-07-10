@@ -1,6 +1,18 @@
 #!/bin/bash
 set -e
 
-echo "Build image"
+echo "Launching linter"
+./gradlew detekt
 
-docker build -t "${IMAGE_NAME:="people_test"}:${IMAGE_TAG:="latest"}" .
+echo "Launching dependency security check"
+./gradlew dependencyCheckAnalyze
+
+echo "Launching dependency updates check"
+./gradlew dependencyUpdates
+
+echo "Launching tests"
+./gradlew test
+
+./build_image.sh
+
+echo "Build. FINISHED"
