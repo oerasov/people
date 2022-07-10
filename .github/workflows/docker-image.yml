@@ -30,4 +30,5 @@ jobs:
     - name: Build the Docker image
       env: 
         IMAGE_TAG: ${{ github.sha }}
+        IMAGE_NAME: people
       run: ./build_image.sh
