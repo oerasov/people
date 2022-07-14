@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import io.gitlab.arturbosch.detekt.Detekt
 
 plugins {
-    id("org.springframework.boot") version "2.2.1.BUILD-SNAPSHOT"
+    id("org.springframework.boot") version "2.7.0"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
     kotlin("jvm") version "1.6.20"
     kotlin("plugin.spring") version "1.6.20"
@@ -53,6 +53,7 @@ allprojects {
         kotlinOptions {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "1.8"
+            allWarningsAsErrors = true
         }
     }
 
@@ -60,12 +61,6 @@ allprojects {
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
-val developmentOnly by configurations.creating
-configurations {
-    runtimeClasspath {
-        extendsFrom(developmentOnly)
-    }
-}
 
 dependencies {
     // spring modules
@@ -88,8 +83,8 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     //persistance
-    implementation("org.postgresql:postgresql:42.3.4")
-    implementation("org.liquibase:liquibase-core:4.9.1")
+    implementation("org.postgresql:postgresql:42.3.6")
+    implementation("org.liquibase:liquibase-core:4.11.0")
 
     // tests
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")

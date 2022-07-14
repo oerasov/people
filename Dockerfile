@@ -12,6 +12,6 @@ USER spring:spring
 
 EXPOSE 8080
 
-COPY --from=build /workspace/build/libs/*.jar mainApp.jar
+COPY --from=build /workspace/build/libs/people-0.0.1-SNAPSHOT.jar mainApp.jar
 
 ENTRYPOINT ["java","-jar","mainApp.jar"]
